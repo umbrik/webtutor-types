@@ -47,33 +47,3 @@ type Extract<T, U> = T extends U ? T : never;
 * Construct a type with the properties of T except for those in type K.
 */
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
-
-interface IWTCommonEventStatusType {
-  id: string;
-  name: string;
-  text_color: string;
-  bk_color: string;
-}
-
-declare interface common extends Object {
-  request_status_types: XmlMultiElem<IWTCommonEventStatusType>;
-  event_status_types: XmlMultiElem<IWTCommonEventStatusType>;
-  learning_states: XmlMultiElem<any>;
-  resource_types: XmlMultiElem<any>;
-  exchange_object_types: XmlMultiElem<any>;
-  education_learning_states: XmlMultiElem<any>;
-  career_reserve_status_types: XmlMultiElem<any>;
-  career_reserve_tasks_types: XmlMultiElem<any>;
-  learning_task_status_types: XmlMultiElem<any>;
-}
-
-declare var common: common;
-
-interface categorys extends Object {
-  id: XmlElem<string>;
-  name: XmlElem<string>;
-}
-
-declare var categorys: categorys;
-
-declare var DefaultDb: string;

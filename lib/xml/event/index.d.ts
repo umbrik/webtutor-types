@@ -1,0 +1,206 @@
+import { IWTCustomElemsBase, IWTKnowledgePartsBase, IWTEventSettingsBase, IWTCatalogListBase, XmlElem, XmlMultiElem, IWTEventLector, IWTEventForm, IWTEventStage, IWTEventCollaborator, IWTEventUnnamedPersonByOrgs, IWTEventEvenPreparations, IWTEventGroup, IWTEventTutor, IWTEventObjectResource, IWTEventContract, IWTEventExpenseItem, IWTEventFile, IWTEventLibraryMaterial, IWTEventLearningTask, IWTEventPhase, IDoc, IWTResourceDocumentTopElem } from "..";
+import { ICollaborator } from "../collaborator";
+
+export interface IWTEventTopElem extends
+  IWTCustomElemsBase,
+  IWTKnowledgePartsBase,
+  IWTEventSettingsBase,
+  IWTCatalogListBase
+{
+  /** ID мероприятия */
+  id?: XmlElem<number>;
+  /** Код мероприятия */
+  code?: XmlElem<string>;
+  /** Название мероприятия */
+  name?: XmlElem<string>;
+  /** ID ресурса мероприятия */
+  resource_id?: XmlElem<number>;
+  /** Код типа мероприятия */
+  type_id?: XmlElem<string>;
+  /** ID типа мероприятия */
+  event_type_id?: XmlElem<number>;
+  /** Дата начала мероприятия */
+  start_date?: XmlElem<Date>;
+  /** Дата окончания мероприятия */
+  finish_date?: XmlElem<Date>;
+  /** Является ли мероприятия эталонным */
+  is_model?: XmlElem<boolean>;
+  is_room?: XmlElem<boolean>;
+  /** ID расположения мероприятия */
+  place_id?: XmlElem<number>;
+  /** Название места проведения мероприятия */
+  place?: XmlElem<string>;
+  cost?: XmlElem<string>;
+  lectors?: XmlMultiElem<IWTEventLector>;
+  cost_type?: XmlElem<string>;
+  vclass_host?: XmlElem<string>;
+  use_camera_capture?: XmlElem<boolean>;
+  login_with_camera_only?: XmlElem<boolean>;
+  capture_rate?: XmlElem<number>;
+  record_status?: XmlElem<string>;
+  record_exists?: XmlElem<boolean>;
+  record_id?: XmlElem<number>;
+  record_date?: XmlElem<Date>;
+  record_download_count?: XmlElem<number>;
+  record_view_count?: XmlElem<number>;
+  bandwidth?: XmlElem<number>;
+  use_record_camera_capture?: XmlElem<boolean>;
+  view_with_camera_only?: XmlElem<boolean>;
+  record_capture_rate?: XmlElem<number>;
+  current_presentation_id?: XmlElem<number>;
+  webinar_system_id?: XmlElem<number>;
+  use_vclass?: XmlElem<boolean>;
+  vclass_setting_id?: XmlElem<number>;
+  show_record?: XmlElem<boolean>;
+  allow_record_download?: XmlElem<boolean>;
+  use_reserve_server?: XmlElem<boolean>;
+  compound_program_id?: XmlElem<number>;
+  education_program_id?: XmlElem<number>;
+  education_method_id?: XmlElem<number>;
+  program_id?: XmlElem<number>;
+  create_compound_program_id?: XmlElem<number>;
+  training_plan_id?: XmlElem<number>;
+  education_org_id?: XmlElem<number>;
+  education_org_type?: XmlElem<string>;
+  education_org_name?: XmlElem<string>;
+  course_id?: XmlElem<number>;
+  forum_id?: XmlElem<number>;
+  chat_id?: XmlElem<number>;
+  poll_id?: XmlElem<number>;
+  status_id?: XmlElem<string>;
+  is_public?: XmlElem<boolean>;
+  is_open?: XmlElem<boolean>;
+  allow_guest_login?: XmlElem<boolean>;
+  is_open_case?: XmlElem<boolean>;
+  public_answers?: XmlElem<boolean>;
+  duration_plan?: XmlElem<number>;
+  duration_days_plan?: XmlElem<number>;
+  duration_fact?: XmlElem<number>;
+  duration_days_fact?: XmlElem<number>;
+  max_person_num?: XmlElem<number>;
+  min_person_num?: XmlElem<number>;
+  person_num?(): number;
+  assist_person_num?(): number;
+  course_finished?: XmlElem<number>;
+  course_process?: XmlElem<number>;
+  course_started?: XmlElem<number>;
+  course_began?: XmlElem<number>;
+  test_finished?: XmlElem<number>;
+  test_process?: XmlElem<number>;
+  test_started?: XmlElem<number>;
+  test_began?: XmlElem<number>;
+  tutor_main?: XmlElem<string>;
+  contract_id?: XmlElem<number>;
+  organizational_form?: XmlElem<string>;
+  event_form?: XmlElem<string>;
+  event_forms?: XmlMultiElem<IWTEventForm>;
+  stages?: XmlMultiElem<IWTEventStage>;
+  org_id?: XmlElem<number>;
+  subdivision_id?: XmlElem<number>;
+  collaborators?: XmlMultiElem<IWTEventCollaborator>;
+  group_educ_group_id?: XmlElem<string>;
+  unnamed_person_by_orgs?: XmlMultiElem<IWTEventUnnamedPersonByOrgs>;
+  unnamed_person_num?: XmlElem<number>;
+  unnamed_person_sum?: XmlElem<number>;
+  group_formed?: XmlElem<boolean>;
+  quota_org?: XmlElem<number>;
+  quota_subdivision?: XmlElem<number>;
+  quota_person?: XmlElem<number>;
+  even_preparations?: XmlMultiElem<IWTEventEvenPreparations>;
+  groups?: XmlMultiElem<IWTEventGroup>;
+  tutors?: XmlMultiElem<IWTEventTutor>;
+  object_resources?: XmlMultiElem<IWTEventObjectResource>;
+  total_cost?: XmlElem<number>;
+  total_cost_plan?: XmlElem<number>;
+  contracts?: XmlMultiElem<IWTEventContract>;
+  cost_center_id?: XmlElem<number>;
+  cost_center_type?: XmlElem<string>;
+  default_cost_center_id?: XmlElem<number>;
+  distribute_cost_type?: XmlElem<string>;
+  expense_items?: XmlMultiElem<IWTEventExpenseItem>;
+  budget_period_id?: XmlElem<number>;
+  files?: XmlMultiElem<IWTEventFile>;
+  library_materials?: XmlMultiElem<IWTEventLibraryMaterial>;
+  learning_tasks?: XmlMultiElem<IWTEventLearningTask>;
+  default_response_type_id?: XmlElem<number>;
+  mandatory_fill_response?: XmlElem<boolean>;
+  default_request_type_id?: XmlElem<number>;
+  use_object_workflow?: XmlElem<boolean>;
+  default_event_result_type_id?: XmlElem<number>;
+  main_material_url?: XmlElem<string>;
+  main_material_width?: XmlElem<string>;
+  main_material_height?: XmlElem<string>;
+  use_video?: XmlElem<boolean>;
+  video_url?: XmlElem<string>;
+  video_login?: XmlElem<string>;
+  video_password?: XmlElem<string>;
+  use_audio?: XmlElem<boolean>;
+  audio_url?: XmlElem<string>;
+  audio_channel_login?: XmlElem<string>;
+  audio_channel_password?: XmlElem<string>;
+  audio_login?: XmlElem<string>;
+  audio_password?: XmlElem<string>;
+  date_request_begin?: XmlElem<Date>;
+  date_request_over?: XmlElem<Date>;
+  date_request_rejection_over?: XmlElem<Date>;
+  parent_event_id?: XmlElem<number>;
+  desc?: XmlElem<string>;
+  comment?: XmlElem<string>;
+  phases?: XmlMultiElem<IWTEventPhase>;
+  disp_collaborator_phase_presence?: XmlElem<boolean>;
+  disp_persons_for_all?: XmlElem<boolean>;
+  has_lector_appraise?: XmlElem<boolean>;
+  has_lector_comp?: XmlElem<boolean>;
+  has_lector_quest?: XmlElem<boolean>;
+  lector_restype?: XmlElem<number>;
+  lector_date_start?: XmlElem<Date>;
+  has_self_appraise?: XmlElem<boolean>;
+  has_self_comp?: XmlElem<boolean>;
+  has_self_quest?: XmlElem<boolean>;
+  self_restype?: XmlElem<number>;
+  self_date_start?: XmlElem<Date>;
+  has_manager_appraise?: XmlElem<boolean>;
+  has_manager_comp?: XmlElem<boolean>;
+  has_manager_quest?: XmlElem<boolean>;
+  manager_restype?: XmlElem<number>;
+  manager_date_start?: XmlElem<Date>;
+  disp_all_assessment_plan?: XmlElem<boolean>;
+  AddFile?(resourceId: number, resourceDocument?: IDoc<IWTResourceDocumentTopElem>): void;
+  get_chat_messages?(dtLastMessageParam: string | Date): XmlMultiElem<any>;
+  send_chat_message?(sTextParam: string, sFullnameParam: string): boolean;
+  set_status?(sNewStatusParam: string, bSendNotificationsParam: boolean, oScreenParam: Object): IDoc<IWTEventTopElem>;
+  send_notifications?(sSendTypeParam: string): boolean;
+  create_results?(): any;
+  change_tutor_list?(): any;
+  change_even_preparation_list?(): any;
+  change_lector_list?(): any;
+  obtain_collaborator?(_person_id: any, _person_doc?: IDoc<ICollaborator>): any;
+  add_group?(_group_id: any): any;
+  get_workflow_id?(): any;
+  create_certificate?(_type_id: any, _type_doc: any): any;
+  start_action?(sTypeParam: any): any;
+  clear_elems?(): any;
+  activate_test?(_test_id: any, _test_doc: any, _duration: any, _start_learning_date: any, _last_learning_date: any, sActTypeParam: any, bSkipDismissed: any): any;
+  assign_qualification?(_qualification_id: any, _assignment_date: any, _expiration_date: any, _send_mail: any): any;
+  check_request_quote?(_request_id: any, _request_doc: any): any;
+  create_event_phases?(): any;
+  filling_event_phases?(): any;
+  distribute_cost_centers?(): any;
+  distribute_total_cost?(): any;
+  obtain_pay_phases?(): any;
+  save_distributed_total_cost?(_result_array: any): any;
+  calc_duration_plan?(): any;
+  update_event_results?(): any;
+  addPerson?(oInputParam: any): any;
+  delPerson?(oInputParam: any): any;
+  changeTutorList?(oInputParam: any): any;
+  get_info?(): any;
+  remove_collaborator?(iPersonIdParam: any): any;
+  get_webinar_admin_template?(): any;
+  get_webinar_setting?(sSettingNameParam: any): any;
+  call_webinar_system_method?(sMethodNameParam: any, oParams: any, bReloadDocument: any): any;
+  set_webinar_setting?(sSettingNameParam: any, sSettingValueParam: any, sSettingTypeParam: any): any;
+  get_webinar_url?(iUserIdParam: any, sUrl: any): any;
+  get_webinar_record_url?(sCurrentHostParam: any): any;
+  get_webinar_record_download_url?(sCurrentHostParam: any): any;
+}
